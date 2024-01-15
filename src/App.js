@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Create from "./Create";
+import Read from "./Read";
+import Update from "./Update";
 
 function App() {
+  const endpoint = "https://65a5024752f07a8b4a3e2676.mockapi.io/api/v1/crud-operation";
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <BrowserRouter>
+        <Routes>
+          <Route exact path="/" element={<Create url={endpoint} />}></Route>
+          <Route path="/read" element={<Read url={endpoint}/>}></Route>
+          <Route path="/update" element={<Update url={endpoint}/>}></Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
